@@ -10,7 +10,7 @@ public class OrderBuilder {
     private Order instancia;
 
     public OrderBuilder() {
-        this.instancia = Order.getInstance();
+        this.instancia = new Order();
     }
 
     public OrderBuilder setOrder(String id, String nameVendor) {
@@ -30,7 +30,7 @@ public class OrderBuilder {
 
             String[] item = itemSale.split("-");
 
-            ItemsOrder itemsOrder = ItemsOrder.getInstance();
+            ItemsOrder itemsOrder = new ItemsOrder();
             itemsOrder.setIdProduct(item[0]);
             itemsOrder.setQtdProduct(Integer.parseInt(item[1]));
             itemsOrder.setValueProduct(Double.parseDouble(item[2]));

@@ -7,29 +7,15 @@ import lombok.Setter;
  * ItemsOrder
  */
 
+@Getter
+@Setter
 public class ItemsOrder {
 
-    private static ItemsOrder itemsOrder;
-
-    @Getter
-    @Setter
     private String idProduct;
-    @Getter
-    @Setter
     private int qtdProduct;
-    @Getter
-    @Setter
     private double valueProduct;
 
-    private ItemsOrder() {
+    public ItemsOrder() {
 
-    }
-
-    public static ItemsOrder getInstance() {
-        if (itemsOrder == null) {
-            itemsOrder = new ItemsOrder();
-        }
-
-        return itemsOrder;
     }
 }

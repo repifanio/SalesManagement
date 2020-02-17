@@ -8,29 +8,16 @@ import lombok.Setter;
 /**
  * Order
  */
+@Getter
+@Setter
 public class Order {
 
-    private static Order order;
-
-    @Getter
-    @Setter
     private String idOrder;
-    @Getter
-    @Setter
     private String nameVendor;
-    @Getter
-    @Setter
     private ArrayList<ItemsOrder> itemsOrder;
 
-    private Order() {
+    public Order() {
 
     }
 
-    public static Order getInstance() {
-        if (order == null) {
-            order = new Order();
-        }
-
-        return order;
-    }
 }
