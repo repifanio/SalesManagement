@@ -11,10 +11,13 @@ import com.camargo.salesmanagement.services.OrderBuilder;
 import com.camargo.salesmanagement.services.Sale;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
-/**
- * Reader
- */
+// @uthor: Camargo 
+// Date: 17/02/2020 
+// commentary: Classe que realiza a leitura do arquivo e inicializa a escrita do arquivo de retorno
+
+@Component
 public class Reader {
 
     final static Logger logger = Logger.getLogger(Reader.class);
@@ -31,6 +34,7 @@ public class Reader {
         sales = new ArrayList<>();
     }
 
+    // Método que permite a implementação do pattern singleton
     public static Reader getInstance() {
         if (reader == null) {
             reader = new Reader();
@@ -43,9 +47,12 @@ public class Reader {
         try {
             BufferedReader file = new BufferedReader(new FileReader(url));
 
+            // chama o método responsável por quebrar a linha do arquivo de acordo com as
+            // especificações passadas para o projeto.
             while (file.ready()) {
                 count++;
-                deconstructString(file, count);
+                deconstructString(file, count); // envia esse count para que o log registre uma possível linha com falha
+                                                // de leitura
             }
             file.close();
 
@@ -55,14 +62,21 @@ public class Reader {
             logger.error("Falha ao ler o arquivo, verifique o stackTrace da falha: " + e.fillInStackTrace());
         }
 
+        // Envia as informações lidas e processadas no arquivo para a classe responsável
+        // por manipular os dados.
         Writer write = Writer.getInstance();
         write.setOrders(orders);
         write.setClients(clients);
         write.setSales(sales);
 
+        // Chama o método que manipula as inormações e gera o arquivo de saída.
         write.writeFileOutput();
     }
 
+    // Método para quebrar a string identificando se é: Cliente, Vendedor ou uma
+    // venda.
+    // A ideia esse método é instanciar um objeto já criado e inclui-lo em seu array
+    // específico para posteriormente ser análisado.
     private void deconstructString(BufferedReader file, int numberLine) {
         try {
 
@@ -88,12 +102,15 @@ public class Reader {
 
                 break;
             case "003":
+                // Para inserir a venda, o sistema utiliza o pattern builder
                 Order order = new OrderBuilder().setOrder(arrayPartes[1], arrayPartes[3]).setItemsOrder(arrayPartes[2])
                         .builder();
                 this.orders.add(order);
 
                 break;
             }
+            // Identifica qualquer linha com defeito, inclui a informaçã no log e continua o
+            // processamento do arquivo.
         } catch (Exception e) {
             logger.error("Falha ao ler a linha de número: " + numberLine
                     + ". A mesma não foi computada para o calculo final.");
