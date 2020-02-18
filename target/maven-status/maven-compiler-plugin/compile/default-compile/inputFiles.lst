@@ -1,9 +1,9 @@
-/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/controller/Writer.java
-/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/services/Client.java
-/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/services/Sale.java
-/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/services/Order.java
-/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/services/ItemsOrder.java
-/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/controller/Reader.java
-/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/services/OrderBuilder.java
-/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/services/ScheduledTasks.java
+/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/service/Reader.java
+/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/repositories/Client.java
+/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/repositories/OrderBuilder.java
+/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/repositories/Sale.java
+/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/service/Writer.java
+/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/repositories/ScheduledTasks.java
+/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/repositories/ItemsOrder.java
+/home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/repositories/Order.java
 /home/rafael/Documentos/Projetos/SalesManagement/src/main/java/com/camargo/salesmanagement/DemoApplication.java
