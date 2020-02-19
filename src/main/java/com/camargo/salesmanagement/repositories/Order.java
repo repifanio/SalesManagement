@@ -2,14 +2,9 @@ package com.camargo.salesmanagement.repositories;
 
 import java.util.ArrayList;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Order
  */
-@Getter
-@Setter
 public class Order {
 
     private String idOrder;
@@ -18,6 +13,30 @@ public class Order {
 
     public Order() {
 
+    }
+
+    public String getIdOrder() {
+        return idOrder;
+    }
+
+    public void setIdOrder(String idOrder) {
+        this.idOrder = idOrder;
+    }
+
+    public String getNameVendor() {
+        return nameVendor;
+    }
+
+    public void setNameVendor(String nameVendor) {
+        this.nameVendor = nameVendor;
+    }
+
+    public ArrayList<ItemsOrder> getItemsOrder() {
+        return itemsOrder;
+    }
+
+    public void setItemsOrder(ArrayList<ItemsOrder> itemsOrder) {
+        this.itemsOrder = itemsOrder;
     }
 
 }

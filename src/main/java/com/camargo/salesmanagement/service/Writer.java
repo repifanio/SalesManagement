@@ -1,5 +1,6 @@
 package com.camargo.salesmanagement.service;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,14 +13,11 @@ import java.util.Map;
 import com.camargo.salesmanagement.repositories.Client;
 import com.camargo.salesmanagement.repositories.ItemsOrder;
 import com.camargo.salesmanagement.repositories.Order;
-import com.camargo.salesmanagement.repositories.Sale;
+import com.camargo.salesmanagement.repositories.SaleMens;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import lombok.Getter;
-import lombok.Setter;
 
 // @uthor: Camargo 
 // Date: 17/02/2020 
@@ -39,15 +37,9 @@ public class Writer {
 
     final static Logger logger = Logger.getLogger(Reader.class);
 
-    @Getter
-    @Setter
     private ArrayList<Order> orders;
-    @Getter
-    @Setter
     private ArrayList<Client> clients;
-    @Getter
-    @Setter
-    private ArrayList<Sale> sales;
+    private ArrayList<SaleMens> sales;
 
     private Writer() {
 
@@ -60,6 +52,39 @@ public class Writer {
         }
 
         return writer;
+    }
+
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(ArrayList<Order> orders) {
+        this.orders = orders;
+    }
+
+    public ArrayList<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(ArrayList<Client> clients) {
+        this.clients = clients;
+    }
+
+    public ArrayList<SaleMens> getSales() {
+        return sales;
+    }
+
+    public void setSales(ArrayList<SaleMens> sales) {
+        this.sales = sales;
+    }
+
+    public String createOutFolderIfNotExistOrUse() {
+        File folder = new File(System.getProperty("user.dir") + folderOut);
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+
+        return folderOut;
     }
 
     // Método responsável por verificar qual foi a maior venda.
@@ -89,7 +114,7 @@ public class Writer {
     }
 
     // Método insere em um map todos os vendedores e suas respectivas vendas
-    public String insertOrdersOfVendors() {
+    public String insertOrdersOfVendorsOnMap() {
         Map<String, Double> map = new HashMap<>();
         double varTest;
 
@@ -108,17 +133,16 @@ public class Writer {
         }
 
         return scanForMostBadVendor(map);
-
     }
 
     // Método que percorre o map comparando as vendas dos vendedores.
     public String scanForMostBadVendor(Map<String, Double> map) {
-        double test = 99999999.00;
+        double minValue = 99999999.00;
         String nameVendor = "";
         for (Map.Entry<String, Double> entry : map.entrySet()) {
 
-            if (test > entry.getValue()) {
-                test = entry.getValue();
+            if (minValue > entry.getValue()) {
+                minValue = entry.getValue();
                 nameVendor = entry.getKey();
             }
         }
@@ -130,15 +154,20 @@ public class Writer {
     public void writeFileOutput() {
         try {
 
-            FileWriter arq = new FileWriter(System.getProperty("user.dir") + folderOut + returnFileName());
+            SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
+
+            FileWriter arq = new FileWriter(
+                    System.getProperty("user.dir") + createOutFolderIfNotExistOrUse() + returnFileName());
             PrintWriter saveArq = new PrintWriter(arq);
 
             saveArq.printf("+--Resultado--+%n");
+            saveArq.printf("--------------------- " + dataFormat.format(new Date()) + " ---------------------%n");
+            saveArq.printf("Resumo da leitura do lote de arquivos:%n");
             saveArq.printf("O Número total de clientes é: " + clients.size() + "%n");
             saveArq.printf("O Número total de vendedores é: " + sales.size() + "%n");
             saveArq.printf("O Número total de vendas é: " + orders.size() + "%n");
             saveArq.printf("A venda mais cara foi a venda com ID: " + getBiggOrder() + "%n");
-            saveArq.printf("O pior vendedor foi: " + insertOrdersOfVendors() + "%n");
+            saveArq.printf("O pior vendedor foi: " + insertOrdersOfVendorsOnMap() + "%n");
             saveArq.printf("+-------------+%n");
 
             arq.close();
@@ -150,7 +179,7 @@ public class Writer {
     }
 
     public String returnFileName() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-SSS");
         return "Report_" + formatter.format(new Date()) + ".dat";
     }
 }

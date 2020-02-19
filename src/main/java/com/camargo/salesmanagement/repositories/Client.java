@@ -1,8 +1,5 @@
 package com.camargo.salesmanagement.repositories;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Client
  */
@@ -11,14 +8,8 @@ public class Client {
 
     private static Client client;
 
-    @Getter
-    @Setter
     private String cnpj;
-    @Getter
-    @Setter
     private String name;
-    @Getter
-    @Setter
     private String businesArea;
 
     private Client() {
@@ -30,5 +21,29 @@ public class Client {
             client = new Client();
         }
         return client;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBusinesArea() {
+        return businesArea;
+    }
+
+    public void setBusinesArea(String businesArea) {
+        this.businesArea = businesArea;
     }
 }

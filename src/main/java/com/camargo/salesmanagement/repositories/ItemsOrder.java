@@ -1,14 +1,9 @@
 package com.camargo.salesmanagement.repositories;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * ItemsOrder
  */
 
-@Getter
-@Setter
 public class ItemsOrder {
 
     private String idProduct;
@@ -17,5 +12,29 @@ public class ItemsOrder {
 
     public ItemsOrder() {
 
+    }
+
+    public String getIdProduct() {
+        return idProduct;
+    }
+
+    public void setIdProduct(String idProduct) {
+        this.idProduct = idProduct;
+    }
+
+    public int getQtdProduct() {
+        return qtdProduct;
+    }
+
+    public void setQtdProduct(int qtdProduct) {
+        this.qtdProduct = qtdProduct;
+    }
+
+    public double getValueProduct() {
+        return valueProduct;
+    }
+
+    public void setValueProduct(double valueProduct) {
+        this.valueProduct = valueProduct;
     }
 }
