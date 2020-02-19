@@ -15,23 +15,23 @@ O arquivo é formado por Strings na qual possui o caractere 'ç' como delimitado
 
 Veja abaixo um exemplo do arquivo e como deve ser feita a desestruturação da linha.
 
-Exemplo de conteúdo total do arquivo:
-001ç1234567891234çPedroç50000
-001ç3245678865434çPauloç40000.99
-002ç2345675434544345çJose da SilvaçRural
-002ç2345675433444345çEduardo PereiraçRural
-003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çPedro
-003ç08ç[1-34-10,2-33-1.50,3-40-0.10]çPaulo
+Exemplo de conteúdo total do arquivo:</br>
+001ç1234567891234çPedroç50000</br>
+001ç3245678865434çPauloç40000.99</br>
+002ç2345675434544345çJose da SilvaçRural</br>
+002ç2345675433444345çEduardo PereiraçRural</br>
+003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çPedro</br>
+003ç08ç[1-34-10,2-33-1.50,3-40-0.10]çPaulo</br>
 
-**Dados do vendedor**
+### Dados do vendedor
 Os dados do vendedor possuem o identificador 001 e seguem o seguinte formato:
-001çCPFçNameçSalary
-**Dados do cliente**
+001çCPFçNameçSalary</br>
+### Dados do cliente
 Os dados do cliente possuem o identificador 002 e seguem o seguinte formato:
-002çCNPJçNameçBusiness Area
-**Dados de venda**
+002çCNPJçNameçBusiness Area</br>
+### Dados de venda
 Os dados de venda possuem o identificador 003 e seguem o seguinte formato:
-003çSale IDç[Item ID-Item Quantity-Item Price]çSalesman name
+003çSale IDç[Item ID-Item Quantity-Item Price]çSalesman name</br>
 
 ## O objetivo foi cumprido?
 
